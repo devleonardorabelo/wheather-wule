@@ -12,6 +12,9 @@ const COLORS = {
     DARK: '#081E24',
     MEDIUM: '#0D2639',
   },
+  WHITE: {
+    NORMAL: '#FFFFFF',
+  },
 };
 
 export default COLORS;
