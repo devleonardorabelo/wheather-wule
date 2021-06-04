@@ -41,8 +41,6 @@ const STYLES = {
   ml2: {marginLeft: 8},
   ml3: {marginLeft: 16},
   ml4: {marginLeft: 24},
-  // Border
-  bd1: {borderRadius: 16},
 };
 
 export default STYLES;
