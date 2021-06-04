@@ -1,8 +1,15 @@
 import React from 'react';
-import {View} from 'react-native';
+import {Text, View, Pressable} from 'react-native';
+import {ConfigurationProps} from '../../types/navigation';
 
-const Home: React.FC = () => {
-  return <View />;
+const Home = ({navigation}: ConfigurationProps) => {
+  return (
+    <View>
+      <Pressable onPress={() => navigation.pop()}>
+        <Text>Teste</Text>
+      </Pressable>
+    </View>
+  );
 };
 
 export default Home;

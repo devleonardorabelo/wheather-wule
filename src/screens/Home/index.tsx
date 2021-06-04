@@ -1,10 +1,13 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Pressable, Text, View} from 'react-native';
+import {HomeProps} from '../../types/navigation';
 
-const Home: React.FC = () => {
+const Home = ({navigation}: HomeProps) => {
   return (
     <View>
-      <Text>Hello</Text>
+      <Pressable onPress={() => navigation.push('Configuration')}>
+        <Text>Hello</Text>
+      </Pressable>
     </View>
   );
 };
