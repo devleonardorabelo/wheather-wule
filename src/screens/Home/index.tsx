@@ -1,14 +1,21 @@
 import React from 'react';
-import {Pressable, Text, View} from 'react-native';
 import {HomeProps} from '../../types/navigation';
+
+import {Button, Page} from '../../components';
+import {COLORS} from '../../theme';
+import {ICONS} from '../../assets';
+
+import styles from './styles';
 
 const Home = ({navigation}: HomeProps) => {
   return (
-    <View>
-      <Pressable onPress={() => navigation.push('Configuration')}>
-        <Text>Hello</Text>
-      </Pressable>
-    </View>
+    <Page primaryColor={COLORS.BLUE.NORMAL} secondaryColor={COLORS.BLUE.LIGHT}>
+      <Button
+        image={ICONS.settings}
+        style={styles.button}
+        onPress={() => navigation.push('Configuration')}
+      />
+    </Page>
   );
 };
 
