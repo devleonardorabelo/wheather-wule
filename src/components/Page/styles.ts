@@ -5,7 +5,9 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
   },
-  content: {},
+  content: {
+    flexGrow: 1,
+  },
 });
 
 export default styles;

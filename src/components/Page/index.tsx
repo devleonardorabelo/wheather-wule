@@ -7,7 +7,7 @@ import styles from './styles';
 type Props = {
   primaryColor: string;
   secondaryColor: string;
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
 };
 
 const Page = ({primaryColor, secondaryColor, children}: Props) => {

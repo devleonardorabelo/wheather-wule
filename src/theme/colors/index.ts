@@ -14,6 +14,7 @@ const COLORS = {
   },
   WHITE: {
     NORMAL: '#FFFFFF',
+    OVERLAY: 'rgba(255, 255, 255, 0.2)',
   },
 };
 
