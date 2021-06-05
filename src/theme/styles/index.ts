@@ -20,6 +20,14 @@ const STYLES = {
   pl2: {paddingLeft: 8},
   pl3: {paddingLeft: 16},
   pl4: {paddingLeft: 24},
+  pv1: {paddingVertical: 4},
+  pv2: {paddingVertical: 8},
+  pv3: {paddingVertical: 16},
+  pv4: {paddingVertical: 24},
+  ph1: {paddingHorizontal: 4},
+  ph2: {paddingHorizontal: 8},
+  ph3: {paddingHorizontal: 16},
+  ph4: {paddingHorizontal: 24},
   // Margins
   m1: {margin: 4},
   m2: {margin: 8},
@@ -41,6 +49,14 @@ const STYLES = {
   ml2: {marginLeft: 8},
   ml3: {marginLeft: 16},
   ml4: {marginLeft: 24},
+  mv1: {marginVertical: 4},
+  mv2: {marginVertical: 8},
+  mv3: {marginVertical: 16},
+  mv4: {marginVertical: 24},
+  mh1: {marginHorizontal: 4},
+  mh2: {marginHorizontal: 8},
+  mh3: {marginHorizontal: 16},
+  mh4: {marginHorizontal: 24},
 };
 
 export default STYLES;

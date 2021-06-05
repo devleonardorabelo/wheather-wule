@@ -17,4 +17,7 @@ export const ICONS = {
   sun: require('./icons/sun.png'),
   sunCloud: require('./icons/sun_cloud.png'),
   settings: require('./icons/settings.png'),
+  arrowLeft: require('./icons/arrow_left.png'),
+  arrowRight: require('./icons/arrow_right.png'),
+  pin: require('./icons/pin.png'),
 };
