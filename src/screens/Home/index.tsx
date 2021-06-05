@@ -7,7 +7,7 @@ import {ICONS, IMAGES} from '../../assets';
 
 const {width: WIDTH} = Dimensions.get('window');
 
-import {Button, Card, Page} from '../../components';
+import {Button, Card, Page, TopInfo} from '../../components';
 import styles from './styles';
 
 const Home = ({navigation}: HomeProps) => {
@@ -17,6 +17,11 @@ const Home = ({navigation}: HomeProps) => {
         image={ICONS.settings}
         style={styles.button}
         onPress={() => navigation.push('Configuration')}
+      />
+      <TopInfo
+        topText="Brasília, DF"
+        centerText="23º"
+        bottomText="Hoje, 6 de junho"
       />
       <View style={styles.weatherImage}>
         <Image source={IMAGES.sunCloud} />

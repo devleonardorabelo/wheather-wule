@@ -1,6 +1,4 @@
-import {Dimensions, StyleSheet} from 'react-native';
-
-const {width: WIDTH} = Dimensions.get('window');
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   button: {
