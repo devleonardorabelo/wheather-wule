@@ -20,4 +20,5 @@ export const ICONS = {
   arrowLeft: require('./icons/arrow_left.png'),
   arrowRight: require('./icons/arrow_right.png'),
   pin: require('./icons/pin.png'),
+  humidity: require('./icons/humidity.png'),
 };
