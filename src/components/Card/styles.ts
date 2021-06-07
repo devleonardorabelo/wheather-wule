@@ -1,18 +1,14 @@
 import {StyleSheet} from 'react-native';
-import {FONTS, STYLES} from '../../theme';
+import {FONTS} from '../../theme';
 
 const styles = StyleSheet.create({
-  ...STYLES,
   ...FONTS,
+  image: {
+    marginBottom: 8,
+  },
   container: {
     alignItems: 'center',
-    flexDirection: 'row',
-  },
-  image: {
-    alignSelf: 'center',
     justifyContent: 'center',
-    height: 96,
-    width: 96,
   },
 });
 

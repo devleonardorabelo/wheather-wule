@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, Text, View} from 'react-native';
+import {Image, Text, View, ViewStyle} from 'react-native';
 import {ICONS} from '../../assets';
 
 import styles from './styles';
@@ -9,11 +9,12 @@ type Props = {
   image: any;
   temp: string;
   humidity: string;
+  style?: ViewStyle;
 };
 
-const WeatherCard = ({hour, image, temp, humidity}: Props) => {
+const WeatherCard = ({hour, image, temp, humidity, style}: Props) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <View style={styles.content}>
         <View>
           <Text style={styles.p}>{hour}</Text>
@@ -24,7 +25,7 @@ const WeatherCard = ({hour, image, temp, humidity}: Props) => {
           </View>
         </View>
         <View>
-          <Image source={image} style={[styles.image, styles.mb2]} />
+          <Image source={{uri: image}} style={[styles.image, styles.mb2]} />
         </View>
       </View>
     </View>

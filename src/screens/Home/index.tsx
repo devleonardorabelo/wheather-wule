@@ -1,16 +1,17 @@
 import React, {useContext, useEffect} from 'react';
-import {Dimensions, Image, View} from 'react-native';
+import {Dimensions, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {HomeProps} from '../../types/Navigation/navigation';
 import {COLORS} from '../../theme';
-import {ICONS, IMAGES} from '../../assets';
+import {ICONS} from '../../assets';
 
 const {width: WIDTH} = Dimensions.get('window');
 
-import {Button, WeatherCard, Page, TopInfo} from '../../components';
+import {Button, WeatherCard, Page, TopInfo, Card} from '../../components';
 import styles from './styles';
 import WeatherContext from '../../contexts/weather';
 import {THourForecast} from '../../types';
+import {handleTreatDate, handleTreatImage} from '../../utils';
 
 const Home = ({navigation}: HomeProps) => {
   const {dayWeather, loadDayWeather} = useContext(WeatherContext);
@@ -909,30 +910,70 @@ const Home = ({navigation}: HomeProps) => {
         style={styles.button}
         onPress={() => navigation.push('Configuration')}
       />
+      <Text style={[styles.h2, styles.mb3]}>Hoje</Text>
       <TopInfo
-        topText="Brasília, DF"
+        image={handleTreatImage(
+          dayWeather?.forecast?.forecastday[0]?.day?.condition?.icon || '',
+        )}
         centerText={`${dayWeather.current.temp_c}º`}
-        bottomText="Hoje, 6 de junho"
+        bottomText={
+          dayWeather?.forecast?.forecastday[0]?.day?.condition?.text || ''
+        }
       />
-      <View style={styles.weatherImage}>
-        <Image source={IMAGES.sunCloud} />
+
+      <View style={styles.cardContainer}>
+        <Card
+          image={ICONS.tempMin}
+          title="Mínima"
+          text={
+            String(dayWeather?.forecast?.forecastday[0]?.day?.mintemp_c) || ''
+          }
+        />
+        <Card
+          image={ICONS.dayHumidity}
+          title="Umidade"
+          text={`${dayWeather?.forecast?.forecastday[0]?.day?.avghumidity}%`}
+        />
+        <Card
+          image={ICONS.tempMax}
+          title="Máxima"
+          text={
+            String(dayWeather?.forecast?.forecastday[0]?.day?.maxtemp_c) || ''
+          }
+        />
       </View>
-      <View style={styles.carousel}>
+
+      <View style={[styles.carousel, styles.mb4]}>
         {dayWeather?.forecast?.forecastday[0]?.hour && (
           <Carousel
             inactiveSlideScale={0.85}
+            inactiveSlideShift={8}
             sliderWidth={WIDTH}
             itemWidth={WIDTH / 2}
             data={dayWeather?.forecast?.forecastday[0].hour}
             renderItem={({item}: {item: THourForecast}) => (
               <WeatherCard
-                hour="13:00"
-                image={ICONS.sun}
+                hour={handleTreatDate(item.time)}
+                image={handleTreatImage(item.condition.icon)}
                 temp={`${item.temp_c}º`}
                 humidity={`${item.humidity}%`}
               />
             )}
           />
+        )}
+      </View>
+      <Text style={[styles.h3, styles.mb3]}>Semana</Text>
+      <View>
+        {dayWeather?.forecast?.forecastday[0]?.hour.map(
+          (item: THourForecast) => (
+            <WeatherCard
+              style={styles.mb3}
+              hour={handleTreatDate(item.time)}
+              image={handleTreatImage(item.condition.icon)}
+              temp={`${item.temp_c}º`}
+              humidity={`${item.humidity}%`}
+            />
+          ),
         )}
       </View>
     </Page>

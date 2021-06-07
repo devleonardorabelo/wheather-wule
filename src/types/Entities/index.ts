@@ -16,6 +16,7 @@ export interface TForecast {
       text: string;
       icon: string;
     };
+    avghumidity: number;
   };
   hour: THourForecast[];
 }

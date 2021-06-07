@@ -8,7 +8,7 @@ async function getWeather(city: string, date: string): Promise<TWeather> {
       params: {
         key: ENV.API_KEY,
         q: city,
-        lang: 'pt-br',
+        lang: 'pt',
         dt: date,
       },
     });

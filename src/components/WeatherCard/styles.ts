@@ -5,9 +5,7 @@ const {width: WIDTH} = Dimensions.get('window');
 const styles = StyleSheet.create({
   ...STYLES,
   ...FONTS,
-  container: {
-    width: WIDTH / 2,
-  },
+  container: {},
   content: {
     backgroundColor: COLORS.WHITE.OVERLAY,
     borderRadius: 16,

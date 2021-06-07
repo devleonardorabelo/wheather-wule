@@ -1,5 +1,5 @@
 import React from 'react';
-import {StatusBar} from 'react-native';
+import {ScrollView, StatusBar} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
@@ -17,7 +17,9 @@ const Page = ({primaryColor, secondaryColor, children}: Props) => {
       style={styles.container}
       colors={[primaryColor, secondaryColor]}>
       <StatusBar backgroundColor={primaryColor} barStyle="light-content" />
-      <SafeAreaView style={styles.content}>{children}</SafeAreaView>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <SafeAreaView style={styles.content}>{children}</SafeAreaView>
+      </ScrollView>
     </LinearGradient>
   );
 };
