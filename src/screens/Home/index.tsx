@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, {useCallback, useContext, useEffect, useRef} from 'react';
 import {Dimensions, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {HomeProps} from '../../types/Navigation/navigation';
@@ -68,7 +62,7 @@ const Home = ({navigation}: HomeProps) => {
         <Card
           image={ICONS.tempMin}
           title="Mínima"
-          text={String(currentWeather?.day?.mintemp_c) || ''}
+          text={`${currentWeather?.day?.mintemp_c}º`}
         />
         <Card
           image={ICONS.dayHumidity}
@@ -78,7 +72,7 @@ const Home = ({navigation}: HomeProps) => {
         <Card
           image={ICONS.tempMax}
           title="Máxima"
-          text={String(currentWeather?.day?.maxtemp_c) || ''}
+          text={`${currentWeather?.day?.maxtemp_c}º`}
         />
       </View>
 
