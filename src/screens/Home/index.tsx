@@ -1,17 +1,18 @@
 import React, {useCallback, useContext, useEffect, useRef} from 'react';
 import {Dimensions, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+
+import WeatherContext from '../../contexts/weather';
 import {HomeProps} from '../../types/Navigation/navigation';
 import {COLORS} from '../../theme';
 import {ICONS} from '../../assets';
-
+import {TForecast, THourForecast} from '../../types';
+import {handleTreatDate, handleTreatImage} from '../../utils';
 const {width: WIDTH} = Dimensions.get('window');
 
 import {Button, WeatherCard, Page, TopInfo, Card} from '../../components';
 import styles from './styles';
-import WeatherContext from '../../contexts/weather';
-import {TForecast, THourForecast} from '../../types';
-import {handleTreatDate, handleTreatImage} from '../../utils';
+
 import moment from 'moment';
 
 const Home = ({navigation}: HomeProps) => {
