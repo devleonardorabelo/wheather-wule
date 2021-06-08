@@ -7,4 +7,5 @@ export const ICONS = {
   tempMin: require('./icons/temp_min.png'),
   tempMax: require('./icons/temp_max.png'),
   dayHumidity: require('./icons/day_humidity.png'),
+  reload: require('./icons/reload.png'),
 };

@@ -1,5 +1,5 @@
 import React, {useCallback, useContext, useRef} from 'react';
-import {Dimensions, Text, View} from 'react-native';
+import {Dimensions, Image, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import moment from 'moment';
 
@@ -15,7 +15,14 @@ const {width: WIDTH} = Dimensions.get('window');
 import styles from './styles';
 
 const Home = ({navigation}: HomeProps) => {
-  const {dayWeather, timeZone, currentHour} = useContext(WeatherContext);
+  const {
+    dayWeather,
+    timeZone,
+    currentHour,
+    loadingWeather,
+    errorAlert,
+    removeCurrentLocation,
+  } = useContext(WeatherContext);
   const carousel: {current: any} = useRef(null);
 
   const handleSelectedHour = useCallback(() => {
@@ -27,9 +34,36 @@ const Home = ({navigation}: HomeProps) => {
     }, 500);
   }, [currentHour]);
 
-  if (!dayWeather || !timeZone) {
-    return <View />;
+  if (loadingWeather) {
+    return (
+      <Page
+        primaryColor={COLORS.BLUE.NORMAL}
+        secondaryColor={COLORS.BLUE.LIGHT}>
+        <View style={styles.errorContainer}>
+          <Image style={styles.mb3} source={ICONS.tempMin} />
+          <Text style={styles.h3}>Carregando</Text>
+        </View>
+      </Page>
+    );
+  } else if ((!dayWeather || !timeZone) && !loadingWeather) {
+    return (
+      <Page
+        primaryColor={COLORS.BLUE.NORMAL}
+        secondaryColor={COLORS.BLUE.LIGHT}>
+        <View style={styles.errorContainer}>
+          <Image style={styles.mb3} source={ICONS.tempMax} />
+          <Text style={styles.h3}>{errorAlert?.title}</Text>
+          <Text style={styles.p}>{errorAlert?.text}</Text>
+          <Button
+            image={ICONS.reload}
+            style={styles.mt3}
+            onPress={() => removeCurrentLocation()}
+          />
+        </View>
+      </Page>
+    );
   }
+
   const currentWeather = dayWeather?.forecast?.forecastday[0];
   const weekWeather = dayWeather?.forecast?.forecastday;
 
@@ -43,7 +77,7 @@ const Home = ({navigation}: HomeProps) => {
       <Text style={[styles.h2, styles.mb3]}>Hoje</Text>
       <TopInfo
         image={handleTreatImage(currentWeather?.day?.condition?.icon || '')}
-        temperature={`${dayWeather.current.temp_c}º`}
+        temperature={`${dayWeather?.current.temp_c}º`}
         condition={currentWeather?.day?.condition?.text || ''}
         location={`${timeZone?.location?.name}, ${timeZone?.location?.region}`}
       />

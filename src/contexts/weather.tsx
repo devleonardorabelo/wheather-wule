@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import getWeather from '../services/getWeather';
 import getTimeZone from '../services/getTimeZone';
 import {
+  Error,
   THourForecast,
   TimeZone,
   TWeather,
@@ -10,7 +11,6 @@ import {
   UserCoords,
 } from '../types';
 import Geolocation from '@react-native-community/geolocation';
-import {Alert} from 'react-native';
 import {handleTreatDate} from '../utils';
 import moment from 'moment';
 
@@ -18,9 +18,11 @@ const WeatherContext = createContext<TWeatherContext>({
   dayWeather: undefined,
   currentLocation: '',
   addCurrentLocation: () => null,
+  removeCurrentLocation: () => null,
   loadingWeather: true,
   timeZone: null,
   currentHour: 0,
+  errorAlert: null,
 });
 
 export const WeatherProvider = ({children}: any) => {
@@ -30,6 +32,7 @@ export const WeatherProvider = ({children}: any) => {
   const [currentHour, setCurrentHour] = useState<number>(0);
   const [timeZone, setTimeZone] = useState<TimeZone | null>(null);
   const [loadingWeather, setLoadingWeather] = useState<boolean>(true);
+  const [errorAlert, setErrorAlert] = useState<Error | null>(null);
 
   const loadDayWeather = useCallback(
     async (location: string | UserCoords, days: string) => {
@@ -47,6 +50,10 @@ export const WeatherProvider = ({children}: any) => {
         })
         .catch(err => {
           console.log(err);
+          setErrorAlert({
+            title: 'Problema no Clima',
+            text: 'Desculpe, não foi possível obter o clima.',
+          });
           setDayWeather(undefined);
           setLoadingWeather(false);
         });
@@ -81,6 +88,7 @@ export const WeatherProvider = ({children}: any) => {
     const location = await AsyncStorage.getItem('currentLocation');
     if (location) {
       setCurrentLocation(location);
+      loadDayWeather(location, '7');
     } else {
       Geolocation.getCurrentPosition(
         position => {
@@ -93,9 +101,10 @@ export const WeatherProvider = ({children}: any) => {
         },
         error => {
           console.log(error);
-          Alert.alert(
-            'Vá em privacide e autorize este App para utilizar sua localização atual',
-          );
+          setErrorAlert({
+            title: 'Falta de permissão',
+            text: 'Vá em privacide e autorize este App para utilizar sua localização atual',
+          });
           Geolocation.setRNConfiguration({
             authorizationLevel: 'whenInUse',
             skipPermissionRequests: false,
@@ -105,10 +114,21 @@ export const WeatherProvider = ({children}: any) => {
     }
   }, [loadDayWeather]);
 
-  const addCurrentLocation = useCallback((location: string) => {
-    AsyncStorage.setItem('currentLocation', location);
-    setCurrentLocation(location);
-  }, []);
+  const addCurrentLocation = useCallback(
+    (location: string) => {
+      AsyncStorage.setItem('currentLocation', location).then(() => {
+        loadCurrentLocation();
+        setCurrentLocation(location);
+      });
+    },
+    [loadCurrentLocation],
+  );
+
+  const removeCurrentLocation = useCallback(() => {
+    AsyncStorage.removeItem('currentLocation').then(() => {
+      loadCurrentLocation();
+    });
+  }, [loadCurrentLocation]);
 
   const handleSelectedHour = useCallback(hours => {
     const hourNow = `${moment().format('HH')}:00`;
@@ -120,7 +140,7 @@ export const WeatherProvider = ({children}: any) => {
 
   useEffect(() => {
     loadCurrentLocation();
-  }, [loadCurrentLocation, currentLocation]);
+  }, [loadCurrentLocation]);
 
   useEffect(() => {
     if (dayWeather) {
@@ -146,9 +166,11 @@ export const WeatherProvider = ({children}: any) => {
         dayWeather,
         currentLocation,
         addCurrentLocation,
+        removeCurrentLocation,
         loadingWeather,
         timeZone,
         currentHour,
+        errorAlert,
       }}>
       {children}
     </WeatherContext.Provider>

@@ -46,3 +46,8 @@ export type UserCoords = {
   latitude: number;
   longitude: number;
 };
+
+export type Error = {
+  title: string;
+  text: string;
+};

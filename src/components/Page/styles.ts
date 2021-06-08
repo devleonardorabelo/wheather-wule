@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     padding: 24,
+    minHeight: '100%',
   },
   content: {
     flexGrow: 1,

@@ -16,6 +16,11 @@ const styles = StyleSheet.create({
     borderColor: COLORS.WHITE.OVERLAY,
     borderRadius: 16,
   },
+  errorContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexGrow: 1,
+  },
   carousel: {
     marginHorizontal: -24,
   },
