@@ -33,3 +33,16 @@ export interface TWeather {
     forecastday: TForecast[];
   };
 }
+
+export interface TimeZone {
+  location: {
+    name: string;
+    region: string;
+    country: string;
+  };
+}
+
+export type UserCoords = {
+  latitude: number;
+  longitude: number;
+};

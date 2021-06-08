@@ -1,13 +1,16 @@
 import Axios from 'axios';
-import {TWeather} from '../types';
+import {TWeather, UserCoords} from '../types';
 import ENV from '../../env.json';
 
-async function getWeather(city: string, days: string = '1'): Promise<TWeather> {
+async function getWeather(
+  location: string | UserCoords,
+  days: string = '1',
+): Promise<TWeather> {
   try {
-    const {data} = await Axios.get(ENV.API_URL, {
+    const {data} = await Axios.get(`${ENV.API_URL}/forecast.json`, {
       params: {
         key: ENV.API_KEY,
-        q: city,
+        q: location,
         lang: 'pt',
         days,
       },

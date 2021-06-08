@@ -5,11 +5,12 @@ import styles from './styles';
 
 type Props = {
   image: string;
-  centerText: string;
-  bottomText: string;
+  temperature: string;
+  condition: string;
+  location: string;
 };
 
-const TopInfo = ({image, centerText, bottomText}: Props) => {
+const TopInfo = ({image, temperature, condition, location}: Props) => {
   return (
     <View style={[styles.container, styles.mb3]}>
       <Image
@@ -20,8 +21,9 @@ const TopInfo = ({image, centerText, bottomText}: Props) => {
         }}
       />
       <View>
-        <Text style={styles.h1}>{centerText}</Text>
-        <Text style={styles.p}>{bottomText}</Text>
+        <Text style={styles.h1}>{temperature}</Text>
+        <Text style={styles.p}>{condition}</Text>
+        <Text style={styles.p}>{location}</Text>
       </View>
     </View>
   );

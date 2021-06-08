@@ -1,6 +1,7 @@
-import React, {useCallback, useContext, useEffect, useRef} from 'react';
+import React, {useCallback, useContext, useRef} from 'react';
 import {Dimensions, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+import moment from 'moment';
 
 import WeatherContext from '../../contexts/weather';
 import {HomeProps} from '../../types/Navigation/navigation';
@@ -8,38 +9,25 @@ import {COLORS} from '../../theme';
 import {ICONS} from '../../assets';
 import {TForecast, THourForecast} from '../../types';
 import {handleTreatDate, handleTreatImage} from '../../utils';
-const {width: WIDTH} = Dimensions.get('window');
 
 import {Button, WeatherCard, Page, TopInfo, Card} from '../../components';
+const {width: WIDTH} = Dimensions.get('window');
 import styles from './styles';
 
-import moment from 'moment';
-
 const Home = ({navigation}: HomeProps) => {
-  const {dayWeather, loadDayWeather} = useContext(WeatherContext);
+  const {dayWeather, timeZone, currentHour} = useContext(WeatherContext);
   const carousel: {current: any} = useRef(null);
 
-  useEffect(() => {
-    loadDayWeather('Brasília', 5);
-  }, [loadDayWeather]);
-
-  const handleSelectedHour = useCallback(hours => {
-    const hourNow = `${moment().format('HH')}:00`;
-    const hourIndex = hours.findIndex(
-      (hour: THourForecast) => handleTreatDate(hour.time) === hourNow,
-    );
+  const handleSelectedHour = useCallback(() => {
     setTimeout(() => {
-      carousel.current.snapToItem(hourIndex, 500);
-    }, 2000);
-  }, []);
+      carousel.current.snapToItem(currentHour, 500);
+      setTimeout(() => {
+        carousel.current.snapToItem(currentHour, 500);
+      }, 500);
+    }, 500);
+  }, [currentHour]);
 
-  useEffect(() => {
-    if (dayWeather) {
-      handleSelectedHour(dayWeather?.forecast?.forecastday[0].hour);
-    }
-  }, [dayWeather, handleSelectedHour]);
-
-  if (!dayWeather) {
+  if (!dayWeather || !timeZone) {
     return <View />;
   }
   const currentWeather = dayWeather?.forecast?.forecastday[0];
@@ -55,8 +43,9 @@ const Home = ({navigation}: HomeProps) => {
       <Text style={[styles.h2, styles.mb3]}>Hoje</Text>
       <TopInfo
         image={handleTreatImage(currentWeather?.day?.condition?.icon || '')}
-        centerText={`${dayWeather.current.temp_c}º`}
-        bottomText={currentWeather?.day?.condition?.text || ''}
+        temperature={`${dayWeather.current.temp_c}º`}
+        condition={currentWeather?.day?.condition?.text || ''}
+        location={`${timeZone?.location?.name}, ${timeZone?.location?.region}`}
       />
 
       <View style={styles.cardContainer}>
@@ -80,6 +69,7 @@ const Home = ({navigation}: HomeProps) => {
       <View style={[styles.carousel, styles.mb4]}>
         {currentWeather?.hour && (
           <Carousel
+            onLayout={() => handleSelectedHour()}
             ref={carousel}
             inactiveSlideScale={0.85}
             keyExtractor={item => String(item.time)}
