@@ -5,19 +5,32 @@ import {COLORS} from '../../theme';
 import styles from './styles';
 
 type Props = {
-  onChange: (e: any) => any;
+  onChangeText: (e: any) => any;
   placeholder?: string;
   style?: ViewStyle;
+  onEndEditing: () => void;
+  defaultValue: string;
+  onFocus: () => void;
 };
 
-const TextInput = ({onChange, placeholder, style}: Props) => {
+const TextInput = ({
+  onChangeText,
+  onEndEditing,
+  placeholder,
+  defaultValue,
+  style,
+  onFocus,
+}: Props) => {
   return (
     <View style={[styles.container, style]}>
       <TI
+        onTouchStart={onFocus}
+        onEndEditing={onEndEditing}
         placeholder={placeholder}
         style={styles.textInput}
-        onChange={onChange}
+        onChangeText={onChangeText}
         placeholderTextColor={COLORS.WHITE.NORMAL}
+        defaultValue={defaultValue}
       />
     </View>
   );

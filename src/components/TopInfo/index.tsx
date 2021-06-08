@@ -20,7 +20,7 @@ const TopInfo = ({image, temperature, condition, location}: Props) => {
           uri: image,
         }}
       />
-      <View>
+      <View style={styles.conditionContainer}>
         <Text style={styles.h1}>{temperature}</Text>
         <Text style={styles.p}>{condition}</Text>
         <Text style={styles.p}>{location}</Text>

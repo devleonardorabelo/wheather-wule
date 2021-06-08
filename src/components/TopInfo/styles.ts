@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
   },
+  conditionContainer: {
+    flexShrink: 1,
+  },
   image: {
     alignSelf: 'center',
     justifyContent: 'center',
