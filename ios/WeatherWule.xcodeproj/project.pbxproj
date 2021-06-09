@@ -11,8 +11,11 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1C81B8BE2671760700F61704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C81B8BD2671760700F61704 /* LaunchScreen.storyboard */; };
+		1C81B8C22671761D00F61704 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C81B8BF2671761D00F61704 /* background@2x.png */; };
+		1C81B8C32671761D00F61704 /* background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C81B8C02671761D00F61704 /* background@3x.png */; };
+		1C81B8C42671761D00F61704 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C81B8C12671761D00F61704 /* background.png */; };
 		5D9ABF80F66650ED2D17BA58 /* libPods-WeatherWule-WeatherWuleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49168794DD1BAAF98D697FB3 /* libPods-WeatherWule-WeatherWuleTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		EB5510E55F7D9E5B1E87C896 /* libPods-WeatherWule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 870F5B11EDF19EAB6AE2E451 /* libPods-WeatherWule.a */; };
 /* End PBXBuildFile section */
 
@@ -36,10 +39,13 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WeatherWule/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WeatherWule/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = WeatherWule/main.m; sourceTree = "<group>"; };
+		1C81B8BD2671760700F61704 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1C81B8BF2671761D00F61704 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "WeatherWule/Images.xcassets/Background.imageset/background@2x.png"; sourceTree = SOURCE_ROOT; };
+		1C81B8C02671761D00F61704 /* background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@3x.png"; path = "WeatherWule/Images.xcassets/Background.imageset/background@3x.png"; sourceTree = SOURCE_ROOT; };
+		1C81B8C12671761D00F61704 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = WeatherWule/Images.xcassets/Background.imageset/background.png; sourceTree = SOURCE_ROOT; };
 		3C304750FC209699D12B0AFC /* Pods-WeatherWule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherWule.release.xcconfig"; path = "Target Support Files/Pods-WeatherWule/Pods-WeatherWule.release.xcconfig"; sourceTree = "<group>"; };
 		49168794DD1BAAF98D697FB3 /* libPods-WeatherWule-WeatherWuleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherWule-WeatherWuleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0976C2DBDC538F48AE9BF0 /* Pods-WeatherWule-WeatherWuleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherWule-WeatherWuleTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherWule-WeatherWuleTests/Pods-WeatherWule-WeatherWuleTests.release.xcconfig"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = WeatherWule/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		870F5B11EDF19EAB6AE2E451 /* libPods-WeatherWule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherWule.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94752AF8F533C124A1946041 /* Pods-WeatherWule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherWule.debug.xcconfig"; path = "Target Support Files/Pods-WeatherWule/Pods-WeatherWule.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -88,9 +94,9 @@
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				1C81B8BD2671760700F61704 /* LaunchScreen.storyboard */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = WeatherWule;
@@ -99,12 +105,14 @@
 		152EC682E20AF230DDF0AEC3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				1C81B8C12671761D00F61704 /* background.png */,
+				1C81B8BF2671761D00F61704 /* background@2x.png */,
+				1C81B8C02671761D00F61704 /* background@3x.png */,
 				94752AF8F533C124A1946041 /* Pods-WeatherWule.debug.xcconfig */,
 				3C304750FC209699D12B0AFC /* Pods-WeatherWule.release.xcconfig */,
 				EEBADF1BAB4E9ACEFE52AD98 /* Pods-WeatherWule-WeatherWuleTests.debug.xcconfig */,
 				7A0976C2DBDC538F48AE9BF0 /* Pods-WeatherWule-WeatherWuleTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -243,8 +251,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				1C81B8C42671761D00F61704 /* background.png in Resources */,
+				1C81B8C22671761D00F61704 /* background@2x.png in Resources */,
+				1C81B8BE2671760700F61704 /* LaunchScreen.storyboard in Resources */,
+				1C81B8C32671761D00F61704 /* background@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
