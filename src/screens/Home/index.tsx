@@ -1,4 +1,4 @@
-import React, {useCallback, useContext, useRef} from 'react';
+import React, {useCallback, useContext, useEffect, useRef} from 'react';
 import {Dimensions, Image, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import moment from 'moment';
@@ -13,6 +13,7 @@ import {handleTreatDate, handleTreatImage} from '../../utils';
 import {Button, WeatherCard, Page, TopInfo, Card} from '../../components';
 const {width: WIDTH} = Dimensions.get('window');
 import styles from './styles';
+import SplashScreen from 'react-native-splash-screen';
 
 const Home = ({navigation}: HomeProps) => {
   const {
@@ -34,18 +35,11 @@ const Home = ({navigation}: HomeProps) => {
     }, 500);
   }, [currentHour]);
 
-  if (loadingWeather) {
-    return (
-      <Page
-        primaryColor={COLORS.BLUE.NORMAL}
-        secondaryColor={COLORS.BLUE.LIGHT}>
-        <View style={styles.errorContainer}>
-          <Image style={styles.mb3} source={ICONS.tempMin} />
-          <Text style={styles.h3}>Carregando</Text>
-        </View>
-      </Page>
-    );
-  } else if ((!dayWeather || !timeZone) && !loadingWeather) {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
+  if (errorAlert) {
     return (
       <Page
         primaryColor={COLORS.BLUE.NORMAL}
@@ -53,12 +47,23 @@ const Home = ({navigation}: HomeProps) => {
         <View style={styles.errorContainer}>
           <Image style={styles.mb3} source={ICONS.tempMax} />
           <Text style={styles.h3}>{errorAlert?.title}</Text>
-          <Text style={styles.p}>{errorAlert?.text}</Text>
+          <Text style={[styles.p, styles.center]}>{errorAlert?.text}</Text>
           <Button
             image={ICONS.reload}
             style={styles.mt3}
             onPress={() => removeCurrentLocation()}
           />
+        </View>
+      </Page>
+    );
+  } else if (loadingWeather) {
+    return (
+      <Page
+        primaryColor={COLORS.BLUE.NORMAL}
+        secondaryColor={COLORS.BLUE.LIGHT}>
+        <View style={styles.errorContainer}>
+          <Image style={styles.mb3} source={ICONS.tempMin} />
+          <Text style={styles.h3}>Carregando</Text>
         </View>
       </Page>
     );

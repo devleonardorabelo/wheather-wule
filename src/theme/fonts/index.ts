@@ -6,6 +6,7 @@ interface AppFonts {
   h2: TextStyle;
   h3: TextStyle;
   p: TextStyle;
+  center: TextStyle;
   strong: TextStyle;
 }
 
@@ -40,6 +41,9 @@ const FONTS: AppFonts = {
     fontSize: 18,
     lineHeight: 21,
     color: COLORS.WHITE.NORMAL,
+  },
+  center: {
+    textAlign: 'center',
   },
   strong: {
     // fontFamily: 'Roboto-Bold',

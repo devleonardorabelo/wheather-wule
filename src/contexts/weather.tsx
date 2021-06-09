@@ -47,6 +47,7 @@ export const WeatherProvider = ({children}: any) => {
         .then(response => {
           setDayWeather(response);
           setLoadingWeather(false);
+          setErrorAlert(null);
         })
         .catch(err => {
           console.log(err);
@@ -92,6 +93,10 @@ export const WeatherProvider = ({children}: any) => {
     } else {
       Geolocation.getCurrentPosition(
         position => {
+          console.log(
+            '🚀 ~ file: weather.tsx ~ line 95 ~ loadCurrentLocation ~ position',
+            position,
+          );
           const current = {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
@@ -104,10 +109,6 @@ export const WeatherProvider = ({children}: any) => {
           setErrorAlert({
             title: 'Falta de permissão',
             text: 'Vá em privacide e autorize este App para utilizar sua localização atual',
-          });
-          Geolocation.setRNConfiguration({
-            authorizationLevel: 'whenInUse',
-            skipPermissionRequests: false,
           });
         },
       );
@@ -141,6 +142,13 @@ export const WeatherProvider = ({children}: any) => {
   useEffect(() => {
     loadCurrentLocation();
   }, [loadCurrentLocation]);
+
+  useEffect(() => {
+    Geolocation.setRNConfiguration({
+      authorizationLevel: 'whenInUse',
+      skipPermissionRequests: false,
+    });
+  }, []);
 
   useEffect(() => {
     if (dayWeather) {
