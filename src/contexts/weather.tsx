@@ -37,7 +37,7 @@ export const WeatherProvider = ({children}: any) => {
   const [errorAlert, setErrorAlert] = useState<Error | null>(null);
 
   const loadDayWeather = useCallback(
-    async (location: string | UserCoords, days: string) => {
+    async (location: string | UserCoords, days) => {
       setLoadingWeather(true);
       let position: UserCoords | string;
       if (typeof location === 'object') {
@@ -136,6 +136,7 @@ export const WeatherProvider = ({children}: any) => {
     const result = await check(permission);
 
     if (result !== 'granted') {
+      request(permission);
       setLoadingWeather(false);
       setErrorAlert({
         title: 'Falta de permissão',
