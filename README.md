@@ -1,6 +1,6 @@
 # Wule Clima
 
-![Image of Yaktocat](https://github.com/devleonardorabelo/wheather-wule/blob/master/docs/assets/home.png)
+<p align="center"><img src="https://github.com/devleonardorabelo/wheather-wule/blob/master/docs/assets/full.jpg"/></p>
 
 ## Sobre
 
