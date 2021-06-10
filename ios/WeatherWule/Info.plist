@@ -35,8 +35,6 @@
 				</dict>
 			</dict>
 		</dict>
-		<key>NSLocationAlwaysUsageDescription</key>
-		<string>O aplicativo utiliza sua localização em tempo real para atualizar a sua posição, para que o motorista possa lhe encontrar e acompanha-lo no mapa.</string>
 		<key>NSLocationWhenInUseUsageDescription</key>
 		<string>O aplicativo utiliza sua localização em tempo real para atualizar a sua posição, para que o motorista possa lhe encontrar e acompanha-lo no mapa.</string>
 		<key>UILaunchStoryboardName</key>

@@ -1,4 +1,6 @@
 import React, {createContext, useCallback, useEffect, useState} from 'react';
+import {Platform} from 'react-native';
+import {request, PERMISSIONS, check} from 'react-native-permissions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import getWeather from '../services/getWeather';
 import getTimeZone from '../services/getTimeZone';
@@ -91,27 +93,14 @@ export const WeatherProvider = ({children}: any) => {
       setCurrentLocation(location);
       loadDayWeather(location, '7');
     } else {
-      Geolocation.getCurrentPosition(
-        position => {
-          console.log(
-            '🚀 ~ file: weather.tsx ~ line 95 ~ loadCurrentLocation ~ position',
-            position,
-          );
-          const current = {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-          };
-          setCurrentLocation(current);
-          loadDayWeather(current, '7');
-        },
-        error => {
-          console.log(error);
-          setErrorAlert({
-            title: 'Falta de permissão',
-            text: 'Vá em privacide e autorize este App para utilizar sua localização atual',
-          });
-        },
-      );
+      Geolocation.getCurrentPosition(position => {
+        const current = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        };
+        setCurrentLocation(current);
+        loadDayWeather(current, '7');
+      });
     }
   }, [loadDayWeather]);
 
@@ -139,16 +128,29 @@ export const WeatherProvider = ({children}: any) => {
     setCurrentHour(hourIndex);
   }, []);
 
+  const handleLocationPermission = useCallback(async () => {
+    const permission =
+      Platform.OS === 'ios'
+        ? PERMISSIONS.IOS.LOCATION_WHEN_IN_USE
+        : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION;
+    const result = await check(permission);
+
+    if (result !== 'granted') {
+      setLoadingWeather(false);
+      setErrorAlert({
+        title: 'Falta de permissão',
+        text: 'Vá em privacide e autorize este App para utilizar sua localização atual',
+      });
+    }
+  }, []);
+
   useEffect(() => {
     loadCurrentLocation();
   }, [loadCurrentLocation]);
 
   useEffect(() => {
-    Geolocation.setRNConfiguration({
-      authorizationLevel: 'whenInUse',
-      skipPermissionRequests: false,
-    });
-  }, []);
+    handleLocationPermission();
+  }, [handleLocationPermission]);
 
   useEffect(() => {
     if (dayWeather) {
