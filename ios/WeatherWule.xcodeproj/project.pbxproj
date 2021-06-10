@@ -15,6 +15,8 @@
 		1C81B8C22671761D00F61704 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C81B8BF2671761D00F61704 /* background@2x.png */; };
 		1C81B8C32671761D00F61704 /* background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C81B8C02671761D00F61704 /* background@3x.png */; };
 		1C81B8C42671761D00F61704 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C81B8C12671761D00F61704 /* background.png */; };
+		1C81B8CB267191A600F61704 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C81B8CA267191A600F61704 /* Roboto-Bold.ttf */; };
+		1C81B8CD267191B400F61704 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C81B8CC267191B400F61704 /* Roboto-Regular.ttf */; };
 		5D9ABF80F66650ED2D17BA58 /* libPods-WeatherWule-WeatherWuleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49168794DD1BAAF98D697FB3 /* libPods-WeatherWule-WeatherWuleTests.a */; };
 		EB5510E55F7D9E5B1E87C896 /* libPods-WeatherWule.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 870F5B11EDF19EAB6AE2E451 /* libPods-WeatherWule.a */; };
 /* End PBXBuildFile section */
@@ -43,6 +45,8 @@
 		1C81B8BF2671761D00F61704 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "WeatherWule/Images.xcassets/Background.imageset/background@2x.png"; sourceTree = SOURCE_ROOT; };
 		1C81B8C02671761D00F61704 /* background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@3x.png"; path = "WeatherWule/Images.xcassets/Background.imageset/background@3x.png"; sourceTree = SOURCE_ROOT; };
 		1C81B8C12671761D00F61704 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = WeatherWule/Images.xcassets/Background.imageset/background.png; sourceTree = SOURCE_ROOT; };
+		1C81B8CA267191A600F61704 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "../../src/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		1C81B8CC267191B400F61704 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		3C304750FC209699D12B0AFC /* Pods-WeatherWule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherWule.release.xcconfig"; path = "Target Support Files/Pods-WeatherWule/Pods-WeatherWule.release.xcconfig"; sourceTree = "<group>"; };
 		49168794DD1BAAF98D697FB3 /* libPods-WeatherWule-WeatherWuleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WeatherWule-WeatherWuleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A0976C2DBDC538F48AE9BF0 /* Pods-WeatherWule-WeatherWuleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherWule-WeatherWuleTests.release.xcconfig"; path = "Target Support Files/Pods-WeatherWule-WeatherWuleTests/Pods-WeatherWule-WeatherWuleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -116,6 +120,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1C81B8C52671908800F61704 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1C81B8CC267191B400F61704 /* Roboto-Regular.ttf */,
+				1C81B8CA267191A600F61704 /* Roboto-Bold.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +149,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				1C81B8C52671908800F61704 /* Resources */,
 				13B07FAE1A68108700A75B9A /* WeatherWule */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* WeatherWuleTests */,
@@ -252,7 +266,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				1C81B8CD267191B400F61704 /* Roboto-Regular.ttf in Resources */,
 				1C81B8C42671761D00F61704 /* background.png in Resources */,
+				1C81B8CB267191A600F61704 /* Roboto-Bold.ttf in Resources */,
 				1C81B8C22671761D00F61704 /* background@2x.png in Resources */,
 				1C81B8BE2671760700F61704 /* LaunchScreen.storyboard in Resources */,
 				1C81B8C32671761D00F61704 /* background@3x.png in Resources */,

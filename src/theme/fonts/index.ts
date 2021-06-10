@@ -12,14 +12,14 @@ interface AppFonts {
 
 const FONTS: AppFonts = {
   h1: {
-    // fontFamily: 'Roboto-Bold',
+    fontFamily: 'Roboto-Bold',
     fontWeight: 'bold',
     fontSize: 48,
     lineHeight: 51,
     color: COLORS.WHITE.NORMAL,
   },
   h2: {
-    // fontFamily: 'Roboto-Bold',
+    fontFamily: 'Roboto-Bold',
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 32,
@@ -27,7 +27,7 @@ const FONTS: AppFonts = {
     color: COLORS.WHITE.NORMAL,
   },
   h3: {
-    // fontFamily: 'Roboto-Bold',
+    fontFamily: 'Roboto-Bold',
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 24,
@@ -35,9 +35,8 @@ const FONTS: AppFonts = {
     color: COLORS.WHITE.NORMAL,
   },
   p: {
-    // fontFamily: 'Roboto-Bold',
+    fontFamily: 'Roboto-Regular',
     fontStyle: 'normal',
-    fontWeight: 'normal',
     fontSize: 18,
     lineHeight: 21,
     color: COLORS.WHITE.NORMAL,
@@ -46,7 +45,7 @@ const FONTS: AppFonts = {
     textAlign: 'center',
   },
   strong: {
-    // fontFamily: 'Roboto-Bold',
+    fontFamily: 'Roboto-Regular',
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 18,
