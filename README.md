@@ -1,5 +1,7 @@
 # Wule Clima
 
+![Image of Yaktocat](https://github.com/devleonardorabelo/wheather-wule/blob/master/docs/assets/home.png)
+
 ## Sobre
 
 ### Referências
@@ -65,4 +67,4 @@ npm run ios
 
 ### Referências técninas
 
-Funções e Tipagens estão disponível na <a href="https://reactnative.dev/docs/environment-setup">documentação de instruções.</a>
+Funções e Tipagens estão disponível na <a href="https://github.com/devleonardorabelo/wheather-wule/blob/master/docs/instructions.md">documentação de instruções.</a>
